@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:calendar_agenda/calendar_agenda.dart';
+import 'package:calendar_agenda/src/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -22,6 +23,7 @@ class CalendarAgenda extends StatefulWidget implements PreferredSizeWidget {
   final SelectedDayPosition selectedDayPosition;
   final Color? selectedDateColor;
   final Color? dateColor;
+  final Color? currentDateColor;
   final Color? calendarBackground;
   final Color? calendarEventSelectedColor;
   final Color? calendarEventColor;
@@ -50,6 +52,7 @@ class CalendarAgenda extends StatefulWidget implements PreferredSizeWidget {
     this.controller,
     this.selectedDateColor = Colors.black,
     this.dateColor = Colors.white,
+    this.currentDateColor = Colors.white,
     this.calendarBackground = Colors.white,
     this.calendarEventSelectedColor = Colors.white,
     this.calendarEventColor = Colors.blue,
@@ -156,6 +159,8 @@ class CalendarAgendaState extends State<CalendarAgenda>
             itemCount: _dates.length,
             itemBuilder: (context, index) {
               DateTime date = _dates[index];
+
+              bool isCurrentDate = date.isSameDate(DateTime.now());
               bool isSelected = _daySelectedIndex == index;
 
               return Container(
@@ -238,6 +243,8 @@ class CalendarAgendaState extends State<CalendarAgenda>
                                   fontSize: 22.0,
                                   color: isSelected
                                       ? widget.selectedDateColor
+                                      : isCurrentDate
+                                      ? widget.currentDateColor
                                       : widget.dateColor,
                                   fontWeight: isSelected
                                       ? FontWeight.bold
@@ -254,7 +261,9 @@ class CalendarAgendaState extends State<CalendarAgenda>
                                 fontSize: 12.0,
                                 color: isSelected
                                     ? widget.selectedDateColor
-                                    : widget.dateColor,
+                                    : isCurrentDate
+                                        ? widget.currentDateColor
+                                        : widget.dateColor,
                                 fontWeight: isSelected
                                     ? FontWeight.bold
                                     : FontWeight.w400,
@@ -285,7 +294,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
             ),
           ),
           Positioned(
-            top: widget.appbar ? 50.0 : 20.0,
+            top: widget.appbar ? 40.0 : 20.0,
             child: Padding(
               padding: EdgeInsets.only(right: padding, left: 10),
               child: Container(
@@ -368,7 +377,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
+            topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
       ),
       builder: (BuildContext context) {
         double height;
@@ -405,6 +414,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
                   endDate: endDate,
                   padding: padding,
                   dateColor: widget.dateColor,
+                  currentDateColor: widget.currentDateColor,
                   dateSelectedBg: widget.calendarEventColor,
                   dateSelectedColor: widget.calendarEventSelectedColor,
                   events: _eventDates,

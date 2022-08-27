@@ -1,3 +1,4 @@
+import 'package:calendar_agenda/src/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
@@ -10,6 +11,7 @@ class FullCalendar extends StatefulWidget {
   final DateTime? selectedDate;
   final Color? dateColor;
   final Color? dateSelectedColor;
+  final Color? currentDateColor;
   final Color? dateSelectedBg;
   final double? padding;
   final String? locale;
@@ -28,6 +30,7 @@ class FullCalendar extends StatefulWidget {
     this.calendarBackground,
     this.events,
     this.dateColor,
+    this.currentDateColor,
     this.dateSelectedColor,
     this.dateSelectedBg,
     this.locale,
@@ -257,6 +260,8 @@ class _FullCalendarState extends State<FullCalendar> {
       DateTime date, bool outOfRange, double width, bool event) {
     bool isSelectedDate = date.toString().split(" ").first ==
         widget.selectedDate.toString().split(" ").first;
+    bool isCurrentDate = date.isSameDate(DateTime.now());
+
     return Container(
       child: GestureDetector(
         onTap: () => outOfRange ? null : widget.onDateChange(date),
@@ -282,10 +287,14 @@ class _FullCalendarState extends State<FullCalendar> {
                       color: outOfRange
                           ? isSelectedDate
                               ? widget.dateSelectedColor!.withOpacity(0.9)
-                              : widget.dateColor!.withOpacity(0.4)
+                              : isCurrentDate
+                                  ? widget.currentDateColor!.withOpacity(0.4)
+                                  : widget.dateColor!.withOpacity(0.4)
                           : isSelectedDate
                               ? widget.dateSelectedColor
-                              : widget.dateColor),
+                              : isCurrentDate
+                                  ? widget.currentDateColor
+                                  : widget.dateColor),
                 ),
               ),
               event
