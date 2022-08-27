@@ -82,14 +82,6 @@ class _ExamplePageState extends State<ExamplePage> {
             _selectedDateAppBBar = date;
           });
         },
-        calendarLogo: Image.network(
-          'https://www.kindpng.com/picc/m/355-3557482_flutter-logo-png-transparent-png.png',
-          scale: 5.0,
-        ),
-        selectedDayLogo: NetworkImage(
-          'https://www.kindpng.com/picc/m/355-3557482_flutter-logo-png-transparent-png.png',
-          scale: 15.0,
-        ),
       ),
       body: Center(
         child: Column(
