@@ -304,33 +304,38 @@ class CalendarAgendaState extends State<CalendarAgenda>
                   children: [
                     leading,
                     widget.fullCalendar!
-                        ? GestureDetector(
-                            onTap: () => widget.fullCalendar!
-                                ? _showFullCalendar(_locale, widget.weekDay)
-                                : null,
-                            child: Row(
-                              children: [
-                                Icon(
-                                  Icons.calendar_today,
-                                  size: 18.0,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(
-                                  width: 10.0,
-                                ),
-                                Text(
-                                  DateFormat.yMMMM(Locale(_locale).toString())
-                                      .format(_selectedDate!),
-                                  style: TextStyle(
-                                    fontSize: 18.0,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w400,
+                        ? Material(
+                      color: Colors.transparent,
+                          child: InkWell(
+                              onTap: () => widget.fullCalendar!
+                                  ? _showFullCalendar(_locale, widget.weekDay)
+                                  : null,
+                              child: Row(
+                                children: [
+
+
+                                  Text(
+                                    DateFormat.MMMM(Locale(_locale).toString())
+                                        .format(_selectedDate!),
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                    textAlign: TextAlign.end,
                                   ),
-                                  textAlign: TextAlign.end,
-                                ),
-                              ],
+                                  SizedBox(
+                                    width: 8.0,
+                                  ),
+                                  Icon(
+                                    Icons.calendar_today,
+                                    size: 21.0,
+                                    color: Colors.white,
+                                  ),
+                                ],
+                              ),
                             ),
-                          )
+                        )
                         : SizedBox(),
                   ],
                 ),
