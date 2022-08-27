@@ -165,6 +165,18 @@ class _FullCalendarState extends State<FullCalendar> {
                           },
                           icon: Icon(Icons.arrow_back),
                         ),
+                        OutlinedButton.icon(
+                          onPressed: () {
+                            widget.onDateChange(DateTime.now());
+                          },
+                          icon: Icon(
+                            Icons.calendar_today,
+                            size: 18,
+                          ),
+                          label: Text("Today"),
+                          style: OutlinedButton.styleFrom(
+                              primary: widget.dateColor),
+                        ),
                         IconButton(
                           onPressed: () {
                             _horizontalScroll.previousPage(
