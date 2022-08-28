@@ -132,8 +132,8 @@ class CalendarAgendaState extends State<CalendarAgenda>
     Widget dayList() {
       return Container(
         width: MediaQuery.of(context).size.width,
-        height: widget.appbar ? 125 : 100,
-        padding: EdgeInsets.all(5),
+        height: widget.appbar ? 135 : 100,
+        padding: EdgeInsets.only(top: 5, bottom: 0),
         alignment: Alignment.bottomCenter,
         child: ScrollablePositionedList.builder(
             padding: _dates.length < 5
@@ -175,7 +175,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
                         height: 100.0,
                         width: MediaQuery.of(context).size.width / 5 - 10,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(12.0),
                           color: isSelected ? Colors.white : null,
                           boxShadow: [
                             isSelected
@@ -294,7 +294,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
             ),
           ),
           Positioned(
-            top: widget.appbar ? 40.0 : 20.0,
+            top: widget.appbar ? 40.0 : 10.0,
             child: Padding(
               padding: EdgeInsets.only(right: padding, left: 10),
               child: Container(
@@ -304,39 +304,20 @@ class CalendarAgendaState extends State<CalendarAgenda>
                   children: [
                     leading,
                     widget.fullCalendar!
-                        ? Material(
-                      color: Colors.transparent,
-                          child: InkWell(
-                              onTap: () => widget.fullCalendar!
-                                  ? _showFullCalendar(_locale, widget.weekDay)
-                                  : null,
-                              child: Row(
-                                children: [
+                        ? OutlinedButton.icon(
+                      onPressed: () {
+                        _showFullCalendar(_locale, widget.weekDay);
+                      },
+                      icon: Icon(
+                        Icons.calendar_today,
+                        size: 18,
+                      ),
+                      label: Text("Calendar"),
+                      style: OutlinedButton.styleFrom(
+                          primary: widget.dateColor),
+                    )
 
-
-                                  Text(
-                                    DateFormat.MMMM(Locale(_locale).toString())
-                                        .format(_selectedDate!),
-                                    style: TextStyle(
-                                      fontSize: 18.0,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                    textAlign: TextAlign.end,
-                                  ),
-                                  SizedBox(
-                                    width: 8.0,
-                                  ),
-                                  Icon(
-                                    Icons.calendar_today,
-                                    size: 21.0,
-                                    color: Colors.white,
-                                  ),
-                                ],
-                              ),
-                            ),
-                        )
-                        : SizedBox(),
+                    : SizedBox(),
                   ],
                 ),
               ),
