@@ -133,7 +133,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
       return Container(
         width: MediaQuery.of(context).size.width,
         height: widget.appbar ? 135 : 100,
-        padding: EdgeInsets.only(top: 5, bottom: 0),
+        padding: EdgeInsets.only(top: 5, bottom: 0, left: 5, right: 5),
         alignment: Alignment.bottomCenter,
         child: ScrollablePositionedList.builder(
             padding: _dates.length < 5
