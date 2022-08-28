@@ -175,7 +175,8 @@ class _FullCalendarState extends State<FullCalendar> {
                           ),
                           label: Text("Today"),
                           style: OutlinedButton.styleFrom(
-                              primary: widget.dateColor),
+                              primary: widget.dateColor,
+                            side: BorderSide(width: 1.0, color: widget.dateColor!.withOpacity(0.3),),),
                         ),
                         IconButton(
                           onPressed: () {
