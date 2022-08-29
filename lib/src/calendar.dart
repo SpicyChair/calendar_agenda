@@ -358,7 +358,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
     });
   }
 
-  mo_showFullCalendar(String locale, WeekDay weekday) {
+  _showFullCalendar(String locale, WeekDay weekday) {
     showModalBottomSheet<void>(
       context: context,
       backgroundColor: Theme.of(context).cardColor,
