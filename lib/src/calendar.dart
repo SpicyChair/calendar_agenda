@@ -358,13 +358,14 @@ class CalendarAgendaState extends State<CalendarAgenda>
     });
   }
 
-  _showFullCalendar(String locale, WeekDay weekday) {
+  mo_showFullCalendar(String locale, WeekDay weekday) {
     showModalBottomSheet<void>(
       context: context,
+      backgroundColor: Theme.of(context).cardColor,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
+            topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)),
       ),
       builder: (BuildContext context) {
         double height;
@@ -387,7 +388,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
               SizedBox(height: 20),
               Container(
                 width: 60,
-                height: 6,
+                height: 5,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3.0),
                     color: Color(0xFFE0E0E0)),
