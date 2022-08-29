@@ -317,7 +317,6 @@ class CalendarAgendaState extends State<CalendarAgenda>
                           primary: widget.dateColor,
                         side: BorderSide(width: 1.0, color: widget.dateColor!.withOpacity(0.3),),),
                     )
-
                     : SizedBox(),
                   ],
                 ),
