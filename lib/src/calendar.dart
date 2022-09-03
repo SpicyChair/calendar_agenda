@@ -173,7 +173,7 @@ class CalendarAgendaState extends State<CalendarAgenda>
                       onTap: () => _goToActualDay(index),
                       child: Container(
                         height: 100.0,
-                        width: MediaQuery.of(context).size.width / 5 - 10,
+                        width: MediaQuery.of(context).size.width > 50 ?  MediaQuery.of(context).size.width / 5 - 10 : 10,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12.0),
                           color: isSelected ? Colors.white : null,
