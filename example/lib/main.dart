@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:calendar_agenda/calendar_agenda.dart';
+import 'package:example/stack_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      home: ExamplePage(),
+      home: StackScreen(),
     );
   }
 }
@@ -65,9 +66,11 @@ class _ExamplePageState extends State<ExamplePage> {
         ),
         weekDay: WeekDay.long,
         fullCalendarScroll: FullCalendarScroll.horizontal,
+        backgroundColor: Colors.transparent,
         fullCalendarDay: WeekDay.long,
         selectedDateColor: Colors.green.shade900,
         dateColor: Colors.white,
+        currentDateColor: Colors.black,
         locale: 'en',
         initialDate: DateTime.now(),
         calendarEventColor: Colors.green,
@@ -110,12 +113,12 @@ class _ExamplePageState extends State<ExamplePage> {
               ),
               // fullCalendar: false,
               locale: 'en',
-              weekDay: WeekDay.long,
+              weekDay: WeekDay.short,
               fullCalendarDay: WeekDay.short,
               selectedDateColor: Colors.blue.shade900,
               initialDate: DateTime.now(),
-              firstDate: DateTime.now().subtract(Duration(days: 140)),
-              lastDate: DateTime.now().add(Duration(days: 4)),
+              firstDate: DateTime.now().subtract(Duration(days: 8)),
+              lastDate: DateTime.now().add(Duration(days: 8)),
               events: List.generate(
                   100,
                   (index) => DateTime.now()

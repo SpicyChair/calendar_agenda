@@ -53,7 +53,7 @@ class _StackScreenState extends State<StackScreen> {
               fullCalendarScroll: FullCalendarScroll.horizontal,
               fullCalendarDay: WeekDay.long,
               selectedDateColor: Colors.green.shade900,
-              dateColor: Colors.white,
+              dateColor: Colors.black,
               currentDateColor: Colors.black,
               locale: 'en',
               initialDate: DateTime.now(),
